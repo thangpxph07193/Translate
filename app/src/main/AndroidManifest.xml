@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LichSuActivity"></activity>
+
+        <activity android:name=".activity.LichSuActivity" />
         <activity android:name=".activity.UuThichActivity" />
         <activity android:name=".activity.VietAnhActivity" />
         <activity android:name=".activity.AnhVietActivity" />
@@ -20,6 +21,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar">
+                <intent-filter>
+                    <action android:name="com.example.myapplication.activity.HomeActivity"/>
+                    <category android:name="android.intent.category.DEFAULT"/>
+                </intent-filter>
         </activity>
     </application>
 
