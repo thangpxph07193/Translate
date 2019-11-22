@@ -10,11 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.LichSuActivity" />
-        <activity android:name=".activity.UuThichActivity" />
-        <activity android:name=".activity.VietAnhActivity" />
-        <activity android:name=".activity.AnhVietActivity" />
-        <activity android:name=".activity.TranslateActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
