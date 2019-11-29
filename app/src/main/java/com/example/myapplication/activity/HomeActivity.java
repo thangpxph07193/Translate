@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com.example.myapplication.R;
 
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -35,8 +34,8 @@ public class HomeActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_search, R.id.nav_history, R.id.nav_favorite,
-                R.id.nav_setting, R.id.nav_search1)
+                R.id.nav_viet, R.id.nav_history, R.id.nav_favorite,
+                R.id.nav_setting, R.id.nav_anh)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

@@ -13,12 +13,8 @@ import com.example.myapplication.R;
 
 public class FavoriteFragment extends Fragment {
 
-    private FavoriteViewModel slideshowViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(FavoriteViewModel.class);
         View root = inflater.inflate(R.layout.fragment_favorite, container, false);
 
         return root;

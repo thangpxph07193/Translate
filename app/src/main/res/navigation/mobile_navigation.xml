@@ -3,13 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_search">
+    app:startDestination="@+id/nav_viet">
 
     <fragment
-        android:id="@+id/nav_search"
-        android:name="com.example.myapplication.activity.ui.search.SearchFragment"
-        android:label="@string/menu_search"
-        tools:layout="@layout/fragment_search" />
+        android:id="@+id/nav_viet"
+        android:name="com.example.myapplication.activity.ui.anh_viet.AnhVietFragment"
+        android:label="@string/menu_anh"
+        tools:layout="@layout/fragment_anhviet" />
+    <fragment
+        android:id="@+id/nav_anh"
+        android:name="com.example.myapplication.activity.ui.viet_anh.VietAnhFrament"
+        android:label="@string/menu_viet"
+        tools:layout="@layout/fragment_vietanh"/>
 
     <fragment
         android:id="@+id/nav_history"
@@ -22,11 +27,7 @@
         android:name="com.example.myapplication.activity.ui.favorite.FavoriteFragment"
         android:label="@string/menu_favorite"
         tools:layout="@layout/fragment_favorite" />
-    <fragment
-        android:id="@+id/nav_search1"
-        android:name="com.example.myapplication.activity.ui.send.Search1Fragment"
-        android:label="@string/menu_search"
-        tools:layout="@layout/fragment_search1"/>
+
 
 
 </navigation>
