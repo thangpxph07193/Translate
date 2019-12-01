@@ -6,4 +6,8 @@ public class Word {
     public String description;
     public String html;
     public String pronounce;
+
+    public void onClick(Word word){
+
+    }
 }
