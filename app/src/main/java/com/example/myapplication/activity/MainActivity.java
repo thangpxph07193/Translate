@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.Window;
 
 import com.example.myapplication.R;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 finally {
-                    Intent intent = new Intent("com.example.myapplication.activity.HomeActivity");
+                    Intent intent = new Intent(MainActivity.this,HomeActivity.class);
                     startActivity(intent);
                 }
             }

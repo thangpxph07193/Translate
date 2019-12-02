@@ -31,6 +31,7 @@ public class TuDienDatabase extends SQLiteOpenHelper implements DataMVP {
     private final Context mContext;
 
     private String AV_TABLE = "av";
+    private String VA_TABLE = "va";
 
     public String ID = "id";
     public String WORD = "word";
@@ -120,7 +121,37 @@ public class TuDienDatabase extends SQLiteOpenHelper implements DataMVP {
                 while (!cursor.isAfterLast()) {
 
                     Word word = new Word();
+                    word.id = cursor.getInt(cursor.getColumnIndex(ID));
+                    word.word = cursor.getString(cursor.getColumnIndex(WORD));
+                    word.description = cursor.getString(cursor.getColumnIndex(DES));
+                    word.html = cursor.getString(cursor.getColumnIndex(HTML));
+                    word.pronounce = cursor.getString(cursor.getColumnIndex(PRO));
+                    words.add(word);
+                    cursor.moveToNext();
 
+                }
+                cursor.close();
+            }
+        }
+
+        return words;
+    }
+    public List<Word> searchVA(String text) {
+        List<Word> words = new ArrayList<>();
+
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+        String SQL = "SELECT * FROM " + VA_TABLE + " WHERE " + WORD + " LIKE '" + text + "%'";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(SQL, null);
+
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+
+                    Word word = new Word();
                     word.id = cursor.getInt(cursor.getColumnIndex(ID));
                     word.word = cursor.getString(cursor.getColumnIndex(WORD));
                     word.description = cursor.getString(cursor.getColumnIndex(DES));

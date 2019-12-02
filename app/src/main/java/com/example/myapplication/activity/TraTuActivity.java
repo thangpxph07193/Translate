@@ -8,23 +8,21 @@ import android.view.View;
 
 import com.example.myapplication.R;
 
-public class HomeActivity extends AppCompatActivity {
+public class TraTuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-
+        setContentView(R.layout.activity_tra_tu);
     }
 
-    public void TraTu(View view) {
-        Intent intent = new Intent(this, TraTuActivity.class);
+    public void VietAnh(View view) {
+        Intent intent = new Intent(this, VietAnhActivity.class);
         startActivity(intent);
     }
 
-    public void YeuThich(View view) {
-    }
-
-    public void LichSu(View view) {
+    public void AnhViet(View view) {
+        Intent intent = new Intent(this, AnhVietActivity.class);
+        startActivity(intent);
     }
 }
