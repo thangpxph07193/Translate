@@ -1,19 +1,26 @@
 package com.example.myapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.activity.MVP.AnhVietPresenter;
-import com.example.myapplication.activity.MVP.AnhVietView;
+import com.example.myapplication.activity.mvp.AnhVietPresenter;
+import com.example.myapplication.activity.mvp.AnhVietView;
 import com.example.myapplication.adapter.WordAdapter;
 import com.example.myapplication.database.TuDienDatabase;
+import com.example.myapplication.databinding.ActivityAnhVietBinding;
+import com.example.myapplication.model.LichSu;
 import com.example.myapplication.model.Word;
 
 import java.util.ArrayList;
@@ -21,49 +28,65 @@ import java.util.List;
 
 public class AnhVietActivity extends AppCompatActivity implements AnhVietView {
     private EditText editText;
-    private Button btnSearchAV;
     private RecyclerView recyclerView;
     private TuDienDatabase tuDienDatabase;
     private WordAdapter wordAdapter;
-    private LinearLayoutManager linearLayoutManager;
     public List<Word> wordList = new ArrayList<>();
+    public List<LichSu>lichSuList = new ArrayList<>();
 
     private AnhVietPresenter anhVietPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anh_viet);
+        ActivityAnhVietBinding activityAnhVietBinding = DataBindingUtil.setContentView(
+                this, R.layout.activity_anh_viet);
+        anhVietPresenter = new AnhVietPresenter(this);
+        activityAnhVietBinding.setAnhVietPresenter(anhVietPresenter);
         editText= findViewById(R.id.edtWord);
         recyclerView = findViewById(R.id.rvWord);
         tuDienDatabase = new TuDienDatabase(this);
         tuDienDatabase.createDataBase();
-        btnSearchAV = findViewById(R.id.btnSearchAV);
 
         wordAdapter = new WordAdapter(wordList,this);
-        linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setAdapter(wordAdapter);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        anhVietPresenter = new AnhVietPresenter(this);
+        anhVietPresenter.search();
+        anhVietPresenter.getDataPt();
 
-        btnSearchAV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String word = editText.getText().toString();
-                anhVietPresenter.search(word);
 
+
+    }
+
+
+    @Override
+    public void searchAV() {
+        String word = editText.getText().toString().trim();
+        if (word.isEmpty()){
+            checkError();
+        }else{
+            LichSu lichSu = new LichSu();
+            if (lichSuList.size()==0){
+                lichSu.setWordLS(word);
             }
-        });
+
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.setAdapter(wordAdapter);
+            List<Word> wordList = tuDienDatabase.searchWord(word);
+            this.wordList.addAll(wordList);
+            wordAdapter.notifyDataSetChanged();
+        }
+
+
     }
 
-
     @Override
-    public void search() {
+    public void getData() {
 
     }
 
     @Override
-    public void checkWord() {
-        editText.setError("Vui lòng nhập dữ liệu...");
+    public void checkError() {
+        editText.setError("Vui lòng nhập từ cần tra");
     }
 }

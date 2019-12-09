@@ -1,21 +1,26 @@
 package com.example.myapplication.adapter;
 
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
-import android.text.Html;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.database.TuDienDatabase;
 import com.example.myapplication.model.Word;
 
 import java.util.List;
 
 public class WordAdapter extends RecyclerView.Adapter<WordHolder> {
+    private TuDienDatabase tuDienDatabase;
     private List<Word> wordList;
 
     private Context context;
@@ -33,19 +38,26 @@ public class WordAdapter extends RecyclerView.Adapter<WordHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WordHolder holder, int position) {
+    public void onBindViewHolder(@NonNull WordHolder holder, final int position) {
         final Word word = wordList.get(position);
         holder.tvWord.setText(word.word);
 
         holder.tvWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.search_dialog);
+                TextView tvWordlog =(TextView) dialog.findViewById(R.id.tvWord);
+                TextView tvProce =(TextView) dialog.findViewById(R.id.tvProce);
+                TextView tvDestion =(TextView) dialog.findViewById(R.id.tvDestion);
 
-                builder.setTitle(word.word);
-                builder.setMessage(Html.fromHtml(word.html));
+                tvWordlog.setText(word.word);
+                tvDestion.setText(word.description);
+                tvProce.setText(word.pronounce);
 
-                builder.show();
+
+                dialog.show();
+                dialog.getWindow().setLayout(1100, 900);
             }
         });
     }

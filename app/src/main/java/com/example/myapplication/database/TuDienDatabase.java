@@ -9,6 +9,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.example.myapplication.dao.LichSuDAO;
+import com.example.myapplication.dao.YeuThichDAO;
 import com.example.myapplication.model.Word;
 
 import java.io.File;
@@ -170,6 +172,8 @@ public class TuDienDatabase extends SQLiteOpenHelper implements DataMVP {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(YeuThichDAO.CREATE_TABLE_YT);
+        db.execSQL(LichSuDAO.CREATE_TABLE_LS);
 
     }
 
