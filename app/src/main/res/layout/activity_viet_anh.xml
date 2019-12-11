@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.VietAnhActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="VietAnhPresenter"
+            type="com.example.myapplication.activity.mvp.presenter.VietAnhPresenter" />
 
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.VietAnhActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,14 +26,17 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="80dp"/>
-        <Button
-            android:onClick="searchVA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search" />
+        <ImageView
+            android:onClick="@{() -> VietAnhPresenter.search()}"
+            android:id="@+id/btnSearchAV"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/search" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvVA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-</LinearLayout>
+    </LinearLayout>
+</layout>

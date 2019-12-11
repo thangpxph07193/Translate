@@ -1,4 +1,4 @@
-package com.example.myapplication.adapter;
+package com.example.myapplication.holder;
 
 import android.view.View;
 import android.widget.TextView;

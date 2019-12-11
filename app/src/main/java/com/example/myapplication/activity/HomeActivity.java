@@ -23,8 +23,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void YeuThich(View view) {
+        Intent intent = new Intent(this, YeuThichActivity.class);
+        startActivity(intent);
     }
 
     public void LichSu(View view) {
+        Intent intent = new Intent(this, LichSuActivity.class);
+        startActivity(intent);
     }
 }

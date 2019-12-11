@@ -3,6 +3,15 @@ package com.example.myapplication.model;
 public class LichSu {
     public String wordLS;
     public String nghiaLS;
+    public String phienAmLS;
+
+    public String getPhienAmLS() {
+        return phienAmLS;
+    }
+
+    public void setPhienAmLS(String phienAmLS) {
+        this.phienAmLS = phienAmLS;
+    }
 
     public String getWordLS() {
         return wordLS;

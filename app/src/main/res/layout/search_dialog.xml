@@ -24,10 +24,10 @@
         <ImageView
             android:layout_gravity="right"
             android:layout_marginLeft="30dp"
-            android:id="@+id/imageView"
+            android:id="@+id/imgAddYT"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:srcCompat="@drawable/favorite"
+            app:srcCompat="@drawable/hi"
             android:layout_marginRight="10dp"/>
     </LinearLayout>
 

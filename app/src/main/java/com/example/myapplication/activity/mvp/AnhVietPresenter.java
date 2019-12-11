@@ -1,10 +1,6 @@
 package com.example.myapplication.activity.mvp;
 
-import android.content.Context;
-import android.widget.EditText;
-
-import com.example.myapplication.activity.AnhVietActivity;
-
+import com.example.myapplication.activity.mvp.view.AnhVietView;
 
 
 public class AnhVietPresenter {
@@ -18,9 +14,6 @@ public class AnhVietPresenter {
 
     public void search() {
         anhVietView.searchAV();
-    }
-    public void getDataPt(){
-        anhVietView.getData();
     }
 
 

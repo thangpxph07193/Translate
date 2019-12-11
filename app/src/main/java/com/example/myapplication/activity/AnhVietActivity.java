@@ -5,18 +5,12 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.activity.mvp.AnhVietPresenter;
-import com.example.myapplication.activity.mvp.AnhVietView;
+import com.example.myapplication.activity.mvp.view.AnhVietView;
 import com.example.myapplication.adapter.WordAdapter;
 import com.example.myapplication.database.TuDienDatabase;
 import com.example.myapplication.databinding.ActivityAnhVietBinding;
@@ -50,7 +44,6 @@ public class AnhVietActivity extends AppCompatActivity implements AnhVietView {
 
         wordAdapter = new WordAdapter(wordList,this);
         anhVietPresenter.search();
-        anhVietPresenter.getDataPt();
 
 
 
@@ -80,10 +73,6 @@ public class AnhVietActivity extends AppCompatActivity implements AnhVietView {
 
     }
 
-    @Override
-    public void getData() {
-
-    }
 
     @Override
     public void checkError() {

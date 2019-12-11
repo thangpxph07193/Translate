@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tvWordLS"
@@ -12,11 +12,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="179dp"
-        android:layout_marginRight="179dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toStartOf="@+id/imgAddYT"
+        app:layout_constraintEnd_toStartOf="@+id/tvPreLS"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/tvWordLS"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvWordLS"
         app:layout_constraintTop_toBottomOf="@+id/tvWordLS" />
 
@@ -51,4 +51,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imgAddYT"
         app:srcCompat="@drawable/xoa" />
+
+    <TextView
+        android:id="@+id/tvPreLS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/tvWordLS"
+        app:layout_constraintStart_toEndOf="@+id/tvWordLS"
+        app:layout_constraintTop_toTopOf="@+id/tvWordLS" />
 </androidx.constraintlayout.widget.ConstraintLayout>

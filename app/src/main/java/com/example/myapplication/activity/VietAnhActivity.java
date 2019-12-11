@@ -10,20 +10,24 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.mvp.presenter.VietAnhPresenter;
+import com.example.myapplication.activity.mvp.view.VietAnhView;
 import com.example.myapplication.adapter.WordAdapter;
 import com.example.myapplication.database.TuDienDatabase;
+import com.example.myapplication.model.LichSu;
 import com.example.myapplication.model.Word;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VietAnhActivity extends AppCompatActivity {
+public class VietAnhActivity extends AppCompatActivity implements VietAnhView {
     private EditText editText;
     private RecyclerView recyclerView;
     private TuDienDatabase tuDienDatabase;
     private WordAdapter wordAdapter;
-    private LinearLayoutManager linearLayoutManager;
     public List<Word> wordList = new ArrayList<>();
+    public List<LichSu> lichSuList = new ArrayList<>();
+    private VietAnhPresenter vietAnhPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,24 +37,35 @@ public class VietAnhActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvVA);
         tuDienDatabase = new TuDienDatabase(this);
         tuDienDatabase.createDataBase();
+        wordAdapter = new WordAdapter(wordList, this);
+        vietAnhPresenter = new VietAnhPresenter(this);
+        vietAnhPresenter.search();
 
-        wordAdapter = new WordAdapter(wordList,this);
-        linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setAdapter(wordAdapter);
-        recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    public void searchVA(View view) {
-        String word= editText.getText().toString().trim();
-
+    @Override
+    public void searchVA() {
+        String word = editText.getText().toString().trim();
         if (word.isEmpty()){
-            editText.setError("Vui lòng nhập dữ liệu....");
-            return;
+            checkError();
         }else{
-            List<Word> wordList = tuDienDatabase.searchVA(word);
+            LichSu lichSu = new LichSu();
+            if (lichSuList.size()==0){
+                lichSu.setWordLS(word);
+            }
+
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.setAdapter(wordAdapter);
+            List<Word> wordList = tuDienDatabase.searchWord(word);
             this.wordList.addAll(wordList);
             wordAdapter.notifyDataSetChanged();
         }
+    }
 
+    @Override
+    public void checkError() {
+        editText.setError("Vui lòng nhập từ cần tra");
     }
 }

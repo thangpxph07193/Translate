@@ -28,12 +28,13 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="80dp"/>
-        <Button
+        <ImageView
             android:onClick="@{() -> AnhVietPresenter.search()}"
             android:id="@+id/btnSearchAV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/search" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvWord"
