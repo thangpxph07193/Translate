@@ -2,8 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
 
     <TextView
         android:id="@+id/tvWordLS"
@@ -11,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="TextView"
@@ -31,25 +34,14 @@
         app:layout_constraintTop_toBottomOf="@+id/tvWordLS" />
 
     <ImageView
-        android:id="@+id/imgAddYT"
-        android:layout_width="47dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvNghiaLS"
-        app:layout_constraintEnd_toStartOf="@+id/imgXoaLS"
-        app:layout_constraintTop_toTopOf="@+id/tvWordLS"
-        app:srcCompat="@drawable/favorite" />
-
-    <ImageView
         android:id="@+id/imgXoaLS"
         android:layout_width="47dp"
         android:layout_height="44dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgAddYT"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgAddYT"
+        app:layout_constraintTop_toTopOf="@+id/tvWordLS"
         app:srcCompat="@drawable/xoa" />
 
     <TextView

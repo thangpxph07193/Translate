@@ -26,13 +26,13 @@ public class AnhVietActivity extends AppCompatActivity implements AnhVietView {
     private TuDienDatabase tuDienDatabase;
     private WordAdapter wordAdapter;
     public List<Word> wordList = new ArrayList<>();
-    public List<LichSu>lichSuList = new ArrayList<>();
 
     private AnhVietPresenter anhVietPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Dịch Tiếng Anh");
         ActivityAnhVietBinding activityAnhVietBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_anh_viet);
         anhVietPresenter = new AnhVietPresenter(this);
@@ -43,7 +43,6 @@ public class AnhVietActivity extends AppCompatActivity implements AnhVietView {
         tuDienDatabase.createDataBase();
 
         wordAdapter = new WordAdapter(wordList,this);
-        anhVietPresenter.search();
 
 
 
@@ -56,11 +55,6 @@ public class AnhVietActivity extends AppCompatActivity implements AnhVietView {
         if (word.isEmpty()){
             checkError();
         }else{
-            LichSu lichSu = new LichSu();
-            if (lichSuList.size()==0){
-                lichSu.setWordLS(word);
-            }
-
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(linearLayoutManager);

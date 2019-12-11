@@ -1,33 +1,46 @@
 package com.example.myapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.mvp.presenter.HomePresenter;
+import com.example.myapplication.activity.mvp.view.HomeView;
+import com.example.myapplication.databinding.ActivityHomeBinding;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements HomeView {
+    private HomePresenter homePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setTitle("Translate");
+        ActivityHomeBinding activityHomeBinding = DataBindingUtil.setContentView(this,
+                R.layout.activity_home);
+        homePresenter = new HomePresenter(this);
+        activityHomeBinding.setHome(homePresenter);
 
     }
 
-    public void TraTu(View view) {
+
+    @Override
+    public void search() {
         Intent intent = new Intent(this, TraTuActivity.class);
         startActivity(intent);
     }
 
-    public void YeuThich(View view) {
+    @Override
+    public void yeuthich() {
         Intent intent = new Intent(this, YeuThichActivity.class);
         startActivity(intent);
     }
 
-    public void LichSu(View view) {
+    @Override
+    public void lichsu() {
         Intent intent = new Intent(this, LichSuActivity.class);
         startActivity(intent);
     }

@@ -111,6 +111,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordHolder> {
                 if (lichSuList.size()==0){
                     lichSu.setWordLS(word.word);
                     lichSu.setNghiaLS(word.description);
+                    lichSu.setPhienAmLS(word.pronounce);
                     lichSuDAO.insertLichSu(lichSu);
                 }else{
                     for (int i=0 ; i < lichSuList.size(); i++){
@@ -120,6 +121,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordHolder> {
                         }else {
                             lichSu.setWordLS(word.word);
                             lichSu.setNghiaLS(word.description);
+                            lichSu.setPhienAmLS(word.pronounce);
                             lichSuDAO.insertLichSu(lichSu);
                         }
                     }

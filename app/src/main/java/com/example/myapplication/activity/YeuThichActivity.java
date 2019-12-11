@@ -25,6 +25,7 @@ public class YeuThichActivity extends AppCompatActivity implements YeuThichView 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Yêu Thích");
         setContentView(R.layout.activity_yeu_thich);
         rvYeuThich = findViewById(R.id.rvYeuThich);
         yeuThichDAO = new YeuThichDAO(this);
@@ -40,6 +41,5 @@ public class YeuThichActivity extends AppCompatActivity implements YeuThichView 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rvYeuThich.setLayoutManager(linearLayoutManager);
 
-        Log.e("ABC", yeuThichList.size()+"");
     }
 }
